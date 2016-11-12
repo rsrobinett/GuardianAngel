@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var bodyParser = require("body-parser");
 var sqlCtrl = require('./sqlApi');
 var db = require('./config').dbLogin;
-var queryBuilder = require('./config').queryBuilder;
+var queryBuilder = require('./querybuilder').queryBuilder;
 
 
 //create db connection using local or live db
@@ -29,20 +29,23 @@ app.listen(port);
 sqlCtrl(app, con);
 
 // demo route: this route queries our sample table in our database using the
-// querybuilder object.  
+// querybuilder object.  You build your SQL querystring in the querystring.js file, then
+// call the function to return the string you need
+
 app.get('/', function (req, res) {
     // here is where you will make your API calls and get the data you need to render
     // your handlebars page.  Save everything to the context object that is passed
-    // to render below is an example using querybuilder with the demo table that is
-    // set up
+    // to render.  Below is an example using querybuilder with the demo table that is
+    // set up.  Note the first param is a SQL string returned from querybuilder
     con.query(queryBuilder.view.demo(), function (err, rows) {
     if (err) {
         res.sendStatus(500);
     }
     else {
         var context = {};
-        context.rows = rows;
-        res.render('home', context);
+        context.val = rows[0];  // rows will be an array of table rows, we grab the first row
+        context.title = "hello";
+        res.render('home', context);  // data is added to the view via handlebars template
     }
     });
 });
