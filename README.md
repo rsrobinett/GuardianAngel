@@ -40,6 +40,14 @@ this later if we need to change our main layout template.  Views must have the
 same for .css files.  Keep all .js and .css in sep files, one per view.  Bootstrap
 is already included in the public/css folder.
 
+## Config Values and Global Variables
+
+1) config.js has config values.  Look at example.js and example.handlebars to see 
+how to use values in config.js 
+
+2) config.js in globals section has global variables.  They can be access just 
+    by the value directly.  See layout for an example.  
+
 
 ## Structure
 

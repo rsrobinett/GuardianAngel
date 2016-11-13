@@ -6,7 +6,12 @@ var mysql = require('mysql');
 var bodyParser = require("body-parser");
 var sqlCtrl = require('./sqlApi');
 var db = require('./config').dbLogin;
+var config = require('./config');
 var queryBuilder = require('./querybuilder').queryBuilder;
+
+//setup configfile
+app.config = config;
+app.locals = config.globals;
 
 //create db connection using local or live db
 var con = mysql.createConnection(db.c9);
@@ -14,6 +19,9 @@ var port = process.env.PORT;
 
 //set up public directories
 app.use('/public', express.static(__dirname + '/public'));
+
+//set up script directory
+app.use('/scripts', express.static(__dirname + '/scripts'));
 
 //set up bodyparser for POST requests, needed to parse req.body
 app.use(bodyParser.urlencoded({ extended: false }));
