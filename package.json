@@ -1,10 +1,10 @@
 {
-  "name": "demo",
-  "version": "0.0.0",
-  "description": "demo",
+  "name": "GuardianAngel",
+  "version": "1.0.0",
+  "description": "Keep watch over your child",
   "main": "app.js",
-  "repository": "",
-  "author": "monkies",
+  "repository": "https://github.com/rsrobinett/GuardianAngel.git",
+  "author": "Group 14",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "~4.14.0",
