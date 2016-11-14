@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     var body = {};
     body.deviceId = 1;
     body.guardianId = 1;
-    req.app.con.query(req.app.queryBuilder.view.latest(body, req.app.con), function(err, rows) {
+    req.app.con.query(req.app.queryBuilder.view.demo(), function(err, rows) {
         var context = {};
         if(err)
         {
@@ -16,11 +16,7 @@ router.get('/', function(req, res, next) {
         }
         else{
                 context.page = "Example";
-                context.value = req.app.config.exampleConfigValue;
-                context.config = req.app.config;
-                context.config = req.app.config.exampleConfigValue;
-                context.demodata = rows; 
-                console.log(context);
+                context.demodata = rows[0]; 
                 res.render('example', context); 
         }
     });

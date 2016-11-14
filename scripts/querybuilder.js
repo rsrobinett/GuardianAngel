@@ -43,51 +43,19 @@ module.exports = {
             },
             
             deviceData: function(body, con) {
-                return 'insert into DeviceData (deviceid, datatime, longitude, latitude, heartrate) ' +
-                'values (' + con.escape(body.deviceid) + ', ' + con.escape(body.datatime) + ', ' +
+                return 'insert into DeviceData (serialnumber, datatime, longitude, latitude, heartrate) ' +
+                'values (' + con.escape(body.serialnumber) + ', ' + con.escape(body.datatime) + ', ' +
                 con.escape(body.longitude) + ', ' + con.escape(body.latitude) + ', ' +
                 con.escape(body.heartrate) + ')'; 
                 
             },
             
             createDevice: function(body, con) {
-                return 'insert into Device (name) values (' + con.escape(body.child) +
-                ') Where not exists (select * from Device where name = ' + con.escape(body.child) +
-                ')';
+                return 'insert into Device (serialnumber, name) values (' + con.escape(body.serialnumber) + ','
+                + con.escape(body.child || body.serialnumber) + ') Where not exists (select * from Device where serialnumber = ' 
+                + con.escape(body.serialnumber) + ')';
                 
             }
         }
     }
 };      
-        /*
-        DoesUserNameExist(Username);
-            select count(*) from Guardian where username='2';
-        //CreateGuardian(Username, Password);
-            insert into 
-            Guardian
-            (username, password)
-            values ('username'','password');    
-        //GetIdForUsernamePassword(Username, Password);
-            select * from Guardian where username = '1' and password = 'password';
-        //GetLatestDeviceData(GuardianId, DeviceId);
-            select  d.name, dd.* from DeviceData dd
-            inner join Device_Guardian dg on dd.deviceid = dg.deviceid
-            inner join Guardian g on g.id = dg.guardianid
-            inner join Device d on dg.deviceid = d.id
-            --where dd.deviceid = 1 and g.id = 1;
-            where dd.deviceid = <deviceid> and g.id = <GuardianID>;
-        //CreateDevice(Device);
-            Mysql
-            insert ignore into Device (name) values ('child2');
-            SqlServer
-            insert into Device (name) 
-            values ('child2')
-            Where not exists (select * from Device where name = 'child2');
-        //CreateDeviceGuardianPairing(Device,Guardian);
-            insert into Device_Guardian
-            (guardianid, deviceid)
-            values (1, 1);  
-        //InsertDeviceData(DeviceID, DataTime, Longitude, Latitude, HeartRate);
-            insert into DeviceData (deviceid, datatime, longitude, latitude, heartrate)
-            values (<deviceid>, <datatime>, <longitude>, <latitude>, <heartrate)>; 
-        */

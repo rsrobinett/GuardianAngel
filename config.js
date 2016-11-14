@@ -27,7 +27,7 @@ module.exports = {
         //     database: 'c9'
         // },
 
-        dbEC2: {
+        ec2: {
             connectionLimit: 10,
             host: 'localhost',
             user: 'student',

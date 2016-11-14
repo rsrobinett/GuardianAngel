@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET Example page. */
 // in the real world we'd probably want to encrypt a child's location
 router.post('/', function(req,res,next){
-
+// create device if it does not exists
     req.app.con.query(req.app.queryBuilder.add.deviceData(req.body, req.app.con), function(err, rows) {
         if(err)
         {
@@ -23,7 +23,7 @@ module.exports = router;
 
 /*
 {
-	"deviceid": "1",
+	"serialnumber": "1",
 	"datatime": "11/13/2016",
 	"longitude": 45.464430,
 	"latitude": -122.850351, 

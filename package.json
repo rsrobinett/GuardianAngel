@@ -5,10 +5,16 @@
   "main": "app.js",
   "repository": "https://github.com/rsrobinett/GuardianAngel.git",
   "author": "Group 14",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "~4.14.0",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.12.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
   }
 }

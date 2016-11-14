@@ -13,9 +13,11 @@ app.config = config;
 app.locals = config.globals;
 
 //create db connection using local or live db
-var port = process.env.PORT;
-app.con = mysql.createConnection(db.c9);
+var port = process.env.PORT || 80;
+app.con = mysql.createConnection(db.ec2);  // change to db.ec2 for AWS host or db.c9 for c9 testing
 
+// export app to testing module
+exports.app = app;
 
 //setup queries
 app.queryBuilder = queryBuilder;

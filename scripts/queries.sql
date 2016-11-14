@@ -14,9 +14,11 @@ create table
 if not exists 
 Device
 (
-Id int NOT NULL AUTO_INCREMENT,
-Name varchar(255) NOT NULL UNIQUE,
-PRIMARY KEY(id)
+Id INT NOT NULL AUTO_INCREMENT,
+SerialNumber INT NOT NULL,
+Name varchar(255) NOT NULL,
+PRIMARY KEY(id),
+UNIQUE KEY (SerialNumber)
 );
 
 create table 
@@ -34,13 +36,13 @@ create table
 if not exists 
 DeviceData(
 Id int NOT NULL AUTO_INCREMENT,
-DeviceID int NOT NULL,
+SerialNumber INT NOT NULL,
 DataTime DATETIME NOT NULL,
 Longitude FLOAT( 10, 6 ),
 Latitude FLOAT( 10, 6 ),
 HeartRate DOUBLE,
 PRIMARY Key(id),
-FOREIGN KEY(DeviceId) REFERENCES Device(ID)
+FOREIGN KEY(SerialNumber) REFERENCES Device(SerialNumber)
 );
 
 insert into 
@@ -49,15 +51,15 @@ Guardian
 values (1,'password');
 
 insert into Device
-(name)
-values ('child1');
+(serialnumber, name)
+values (124,'child1');
 
 insert into Device_Guardian
 (guardianid, deviceid)
 values ((select id from Guardian limit 1), (select id from Device limit 1));
 
-insert into DeviceData (deviceid, datatime, longitude, latitude, heartrate)
-values ((select id from Device limit 1),'2016-11-13 3:08', 45.464430, -122.850351, 100.99);
+insert into DeviceData (serialnumber, datatime, longitude, latitude, heartrate)
+values ((select serialnumber from Device limit 1),'2016-11-13 3:08', 45.464430, -122.850351, 100.99);
 
 select * from Device_Guardian;
 select * from DeviceData;
