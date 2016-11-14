@@ -44,7 +44,7 @@ module.exports = {
             
             deviceData: function(body, con) {
                 return 'insert into DeviceData (deviceid, datatime, longitude, latitude, heartrate) ' +
-                'values (' + con.escape(body.deviceId) + ', ' + con.escape(body.dataTime) + ', ' +
+                'values (' + con.escape(body.deviceid) + ', ' + con.escape(body.datatime) + ', ' +
                 con.escape(body.longitude) + ', ' + con.escape(body.latitude) + ', ' +
                 con.escape(body.heartrate) + ')'; 
                 
