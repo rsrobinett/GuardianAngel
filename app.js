@@ -8,7 +8,6 @@ var db = require('./config').dbLogin;
 var config = require('./config');
 var queryBuilder = require('./scripts/querybuilder').queryBuilder;
 
-
 //setup configfile and local variables
 app.config = config;
 app.locals = config.globals;
@@ -49,14 +48,6 @@ app.use('/', home);
 app.use('/login', login);
 app.use('/example', example);
 app.use('/devicedata', devicedata);
-
-
-// we will build our get/post request handlers in node (probably a new file)
-// it will have the signature of app.get('/route', function).  Function is where
-// we will return either a view OR a data object depending on the query.  Some
-// routes will be nested when node needs to first handle a query request to the 
-// database, then return the data from the database via a new rendered page or
-// data object.  We will probably abstract this away in the sqlApi functions
 
 // placeholder route error handling
 app.use(function(req,res){

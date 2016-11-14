@@ -2,18 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 /* GET Example page. */
-
+// in the real world we'd probably want to encrypt a child's location
 router.post('/', function(req,res,next){
 
     req.app.con.query(req.app.queryBuilder.add.deviceData(req.body, req.app.con), function(err, rows) {
-        var context = {};
         if(err)
         {
-            context.err = err.message;
-            res.send(context.err);
+            res.json(err);
         }
         else{
-            res.send("successfully saved the data");
+            res.json({ message : "successfully saved the data" });
         }
     });
     
@@ -21,7 +19,7 @@ router.post('/', function(req,res,next){
 
 module.exports = router;
 
-//example json
+//example json.
 
 /*
 {
