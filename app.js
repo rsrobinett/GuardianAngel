@@ -1,27 +1,29 @@
 //set up required modules
 var express = require('express');
-var path = require('path');
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
 var sqlCtrl = require('./sqlApi');
 var db = require('./config').dbLogin;
 var config = require('./config');
-var queryBuilder = require('./querybuilder').queryBuilder;
+var queryBuilder = require('./scripts/querybuilder').queryBuilder;
 
-//setup configfile
+
+//setup configfile and local variables
 app.config = config;
 app.locals = config.globals;
 
 //create db connection using local or live db
-var con = mysql.createConnection(db.c9);
 var port = process.env.PORT;
+app.con = mysql.createConnection(db.c9);
+
+
+//setup queries
+app.queryBuilder = queryBuilder;
 
 //set up public directories
 app.use('/public', express.static(__dirname + '/public'));
 
-//set up script directory
-app.use('/scripts', express.static(__dirname + '/scripts'));
 
 //set up bodyparser for POST requests, needed to parse req.body
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,17 +36,19 @@ app.set('view engine', 'handlebars');
 
 //start web server
 app.listen(port);
-sqlCtrl(app, con);
+sqlCtrl(app, app.con);
 
 //setup routes
 var home = require('./routes/home');
 var login = require('./routes/login');
 var example = require('./routes/example');
+var devicedata = require('./routes/devicedata');
 
 //setup views
 app.use('/', home);
 app.use('/login', login);
 app.use('/example', example);
+
 
 // we will build our get/post request handlers in node (probably a new file)
 // it will have the signature of app.get('/route', function).  Function is where

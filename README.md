@@ -55,6 +55,13 @@ Follow the sturcture of the "example" page for wiring up a new page.
 You'll need to add to app.js, create .js in routes folder and .handlebars in 
 views folder. 
 
+## Database
+
+1) If config value db.use is set to false, mock data will be used.
+2) To set up c9.io database use credentials as described here.
+    https://community.c9.io/t/setting-up-mysql/1718
+    
+
 ## Note Taking
 
 Please leave a note on how to use a particular feature if it isn't obvious.
