@@ -4,7 +4,10 @@ var router = express.Router();
 /* GET Example page. */
 
 router.get('/', function(req, res, next) {
-    req.app.con.query(req.app.queryBuilder.view.demo(), function(err, rows) {
+    var body = {};
+    body.deviceId = 1;
+    body.guardianId = 1;
+    req.app.con.query(req.app.queryBuilder.view.latest(body, req.app.con), function(err, rows) {
         var context = {};
         if(err)
         {

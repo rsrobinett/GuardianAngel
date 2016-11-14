@@ -48,6 +48,7 @@ var devicedata = require('./routes/devicedata');
 app.use('/', home);
 app.use('/login', login);
 app.use('/example', example);
+app.use('/devicedata', devicedata);
 
 
 // we will build our get/post request handlers in node (probably a new file)
