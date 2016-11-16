@@ -1,0 +1,45 @@
+body {
+  min-height: 2000px;
+  padding-top: 200px;
+}
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+table {
+    border-spacing: 5px;
+}
+.navbar-header{
+  padding: 20px 20px;
+}
+
+nav {
+  background-color: #33D2FF;
+}
+
+.nav.navbar-nav li a {
+    color: black;
+    height: 50px;
+    margin-top: 40px;
+}
+
+.nav.navbar-nav.navbar-right li {
+  color: black;
+  margin-top: 55px;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    background-color: #33C3FF;
+    color: black;
+}
+
+form {
+  padding-left: 30px;
+}
