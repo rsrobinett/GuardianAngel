@@ -1,4 +1,3 @@
-<title>Homepage</title>
 <!-- Fixed navbar -->
 <nav class="navbar">
   <div class="container">
@@ -12,22 +11,23 @@
       </button>
       <a href='/' class="navbar-brand">Guardian Angel</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href='/location'>Location</a></li>
-        <li><a href=#>History</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>Welcome, {{username}}</li>
-        <li><a href='/logout'> logout</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
   </div>
 </nav>
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Welcome to Guardian Angel</h1>
-    <p>Keep watch over your children</p>
+    <h2>Create Account</h2>
+    <form action="/register/new" method="post">
+      <fieldset>
+        <label for="username">Username<br><input type="text" name="username"></label>
+        <br>
+        <label for="city">Password<br><input type="password" name="password"></label>
+        <br>
+        <label for="temp">Child's Name<br><input type="text" name="child"></label>
+        <br>
+        <br>
+      </fieldset>
+      <input type="submit" value="Register">
+    </form>
   </div>
-</div>
+</div> <!-- /container -->
