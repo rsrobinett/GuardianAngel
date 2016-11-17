@@ -1,5 +1,31 @@
-<h1>{{page}}</h1>
-
-
-
+<!-- Fixed navbar -->
+</div>
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href='/' class="navbar-brand">Guardian Angel</a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <form action="/login" method="post" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="password" placeholder="Password">
+        </div>
+        <button type="submit" value="Log In" class="btn btn-default">Sign In</button>
+        <ul class="nav">
+          <li><a href='/register'>Create Account</a></li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>
 

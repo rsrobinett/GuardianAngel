@@ -1,0 +1,48 @@
+<nav class="navbar">
+  <div class='container'>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href='/' class="navbar-brand">Guardian Angel</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li><a href=#>Location</a></li>
+      <li><a href=#>History</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>Welcome, {{username}} <a href='/logout'>logout</a></li>
+    </ul>
+  </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h2>{{name}}'s Current Location</h2>
+      <div id="map"></div>
+      <a href='/location' class="btn btn-default">Refresh</a>
+    </div>
+  </div>
+</div> <!-- /container -->
+<script>
+  function initMap() {
+    var uluru = {lat: {{latitude}}, lng: {{longitude}} };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfNdzvBzM5eUew6Y3C1b5lfyljjSKFuE&callback=initMap">
+</script>

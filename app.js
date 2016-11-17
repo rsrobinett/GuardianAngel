@@ -1,65 +1,72 @@
 //set up required modules
 var express = require('express');
-var path = require('path');
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
-var sqlCtrl = require('./sqlApi');
+var session = require('express-session');
+var pp = require('./pp');
 var db = require('./config').dbLogin;
-var config = require('./config');
-var queryBuilder = require('./querybuilder').queryBuilder;
-
-//setup configfile
-app.config = config;
-app.locals = config.globals;
+app.loggedIn = require('connect-ensure-login').ensureLoggedIn;
+app.config = require('./config');
+app.queryBuilder = require('./scripts/querybuilder').queryBuilder;
+app.locals = app.config.globals;
+exports.app = app;
 
 //create db connection using local or live db
-var con = mysql.createConnection(db.c9);
-var port = process.env.PORT;
+var port = process.env.PORT || 3000;
+app.con = mysql.createConnection(db.local);  // change to db.ec2 for AWS host or db.c9 for c9 testing
 
 //set up public directories
 app.use('/public', express.static(__dirname + '/public'));
 
-//set up script directory
-app.use('/scripts', express.static(__dirname + '/scripts'));
-
 //set up bodyparser for POST requests, needed to parse req.body
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// set up session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+
+// set up passport
+pp(app);
+
 // set up handlebars
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 //start web server
 app.listen(port);
-sqlCtrl(app, con);
 
 //setup routes
 var home = require('./routes/home');
-var login = require('./routes/login');
-var example = require('./routes/example');
+var register = require('./routes/register');
+var deviceData = require('./routes/devicedata');
+var location = require('./routes/location');
 
-//setup views
+//map routes
 app.use('/', home);
-app.use('/login', login);
-app.use('/example', example);
+app.use('/register', register);
+app.use('/devicedata', deviceData);
+app.use('/location', location);
 
-// we will build our get/post request handlers in node (probably a new file)
-// it will have the signature of app.get('/route', function).  Function is where
-// we will return either a view OR a data object depending on the query.  Some
-// routes will be nested when node needs to first handle a query request to the 
-// database, then return the data from the database via a new rendered page or
-// data object.  We will probably abstract this away in the sqlApi functions
+// set devices to push data
+var active = true;
+if (active) {
+    var locationSimulator = require('./scripts/locationSimulator');
+    locationSimulator.executeAll();
+}
 
 // placeholder route error handling
-app.use(function(req,res){
+app.use(function (req, res) {
     res.status(404);
     res.send('404');
 });
 
-app.use(function(err, req, res, next){
+app.use(function (err, req, res, next) {
     console.error(err.stack);
     res.type('plain/text');
     res.status(500);
