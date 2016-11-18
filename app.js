@@ -12,7 +12,7 @@ app.queryBuilder = require('./scripts/querybuilder').queryBuilder;
 app.locals = app.config.globals;
 exports.app = app;
 
-//create db connection using local or live db
+//create db connection using local or live db, also set mocha test IPs
 var port = process.env.PORT || 3000;
 app.con = mysql.createConnection(db.local);  // change to db.ec2 for AWS host or db.c9 for c9 testing
 
@@ -46,12 +46,14 @@ var home = require('./routes/home');
 var register = require('./routes/register');
 var deviceData = require('./routes/devicedata');
 var location = require('./routes/location');
+var history = require('./routes/history');
 
 //map routes
 app.use('/', home);
 app.use('/register', register);
 app.use('/devicedata', deviceData);
 app.use('/location', location);
+app.use('/history', history);
 
 // set devices to push data
 var active = true;

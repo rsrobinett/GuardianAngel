@@ -8,7 +8,8 @@ module.exports = {
         view: {
 
             latestLocation: function(body, con) {
-                return 'select d.Name, dd.DataTime, dd.Longitude, dd.Latitude, dd.HeartRate from DeviceData dd ' +
+                return 'select d.Name as name, dd.DataTime as datatime, dd.Longitude as longitude, dd.Latitude ' +
+                    'as latitude, dd.HeartRate as heartrate from DeviceData dd ' +
             'inner join Device_Guardian dg on dd.DeviceId = dg.DeviceId ' +
             'inner join Guardian g on g.id = dg.GuardianId ' +
             'inner join device d on dg.DeviceId = d.Id ' +
@@ -28,6 +29,19 @@ module.exports = {
 
             allDevices: function () {
                 return 'select Id as id, Name as name from device';
+            },
+
+            childDevice: function (body, con) {
+                return 'select Id as id from device where name=' + con.escape(body.child);
+            },
+
+            locationHistory: function (body, con) {
+                return 'select dd.DataTime as datatime, dd.Longitude as longitude, dd.Latitude as latitude, ' +
+                'dd.HeartRate as heartrate FROM  DeviceData dd ' +
+                'INNER JOIN Device_Guardian dg ON dd.DeviceID = dg.DeviceId ' +
+                'INNER JOIN Guardian g ON dg.GuardianId = g.id ' +
+                'WHERE g.username =' + con.escape(body.username) +
+                    ' ORDER BY datatime DESC';
             }
         },
         

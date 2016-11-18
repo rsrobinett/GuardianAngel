@@ -12,11 +12,20 @@ module.exports = {
         },
         isValidReq: function (expect, has) {
             for (var property in expect) {
-                if(expect.hasOwnProperty(property) && !(has.hasOwnProperty(property) && has[property] != null)) {
+                // (property exists in expect) and [(exists in has and is null/empty) or (does not exists in has)]
+                if (expect.hasOwnProperty(property) && ((has.hasOwnProperty(property) && (has[property] == null
+                    || has[property] == "")) || !has.hasOwnProperty(property))){
                     return false;
                 }
             }
             return true;
+        },
+
+        mocha: {
+            username: 'mochauser',
+            password: 'mochapass',
+            child: 'mochachild',
+            deviceID: 1
         }
     },
 

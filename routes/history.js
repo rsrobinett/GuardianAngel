@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var key = require('../config').staticKey;
 var app = require('../app').app;
 
 router.queryCallback = function (req, res) {
@@ -11,17 +10,17 @@ router.queryCallback = function (req, res) {
             res.status(500).send(err);
         } else if (rows.length == 0) {
             context.empty = true;
-            res.render('location', context);
+            res.render('history', context);
         } else {
-            context = rows[0];
+            context.history = rows;
             context.username = req.user.username;
-            res.render('location', context);
+            res.render('history', context);
         }
     };
 };
 
 router.routeCallback = function (req, res) {
-    req.app.con.query(req.app.queryBuilder.view.latestLocation(req.user, req.app.con), router.queryCallback(req, res));
+    req.app.con.query(req.app.queryBuilder.view.locationHistory(req.user, req.app.con), router.queryCallback(req, res));
 };
 
 router.get('/', app.loggedIn('/login'), router.routeCallback);

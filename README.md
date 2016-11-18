@@ -71,5 +71,5 @@ Please leave a note on how to use a particular feature if it isn't obvious.
 
 1)  Review https://mochajs.org/ for a tutorial on how to use mocha.  Each javascript
     file and/or view should have it's own test_filename.js file placed in the /test 
-    directory.  test_example.js has some example tests and a brief tutorial.  The done
-    function in the async examples is not actually defined anywhere in the test. 
+    directory.  The done function in the async examples is not actually defined 
+    anywhere in the test. 

@@ -1,0 +1,21 @@
+<h2>history</h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+    <th>HeartRate</th>
+    <th>View Map</th>
+  </tr>
+  {{#each history}}
+  <tr>
+    <td>{{this.datatime}}</td>
+    <td>{{this.longitude}}</td>
+    <td>{{this.latitude}}</td>
+    <td>{{this.heartrate}}</td>
+    <td><a>map</a></td>
+  </tr>
+  {{/each}}
+</table>
+
+
