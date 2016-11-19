@@ -1,0 +1,32 @@
+.card-panel {
+  padding: 20px;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 2px;
+  background-color: #fff;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+
+#body-container {
+  margin-top: 30px;
+}
+
+#map, #pano{
+   height: 500px;
+   width: 100%;
+ }
+
+.cap {
+  text-transform: capitalize;
+}
+
+.map-header{
+  color: #ee6e73;
+  font-weight: 300;
+}

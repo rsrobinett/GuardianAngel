@@ -15,6 +15,7 @@ router.queryCallback = function (req, res) {
         } else {
             context = rows[0];
             context.username = req.user.username;
+            context.datatime = context.datatime.toLocaleString();
             res.render('location', context);
         }
     };
@@ -24,6 +25,6 @@ router.routeCallback = function (req, res) {
     req.app.con.query(req.app.queryBuilder.view.latestLocation(req.user, req.app.con), router.queryCallback(req, res));
 };
 
-router.get('/', app.loggedIn('/login'), router.routeCallback);
+router.get('/', app.loggedIn('/'), router.routeCallback);
 
 module.exports = router;

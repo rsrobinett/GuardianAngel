@@ -12,7 +12,7 @@ describe('Location Get Route', function () {
         agent
             .post(login)
             .send(app.locals.mocha)
-            .expect('Location', home)
+            .expect('Location', location)
             .expect(302, done);
     });
 
@@ -33,11 +33,10 @@ describe('Location Get Route', function () {
 
 describe('Home Get Routes Not Logged In', function () {
     var agent = request.agent(app);
-    it('should direct to "/login"', function (done) {
+    it('should direct to "/"', function (done) {
         agent
             .get(home)
-            .expect(302)
-            .expect('Location', login, done)
+            .expect(200, done)
     });
 
     it('should direct to "/login"', function (done) {
@@ -54,7 +53,7 @@ describe('Home Get Routes Logged In', function () {
         agent
             .post(login)
             .send(app.locals.mocha)
-            .expect('Location', home)
+            .expect('Location', location)
             .expect(302, done);
     });
 

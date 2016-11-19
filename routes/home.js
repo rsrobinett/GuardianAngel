@@ -3,19 +3,18 @@ var router = express.Router();
 var app = require('../app').app;
 
 /* GET home page. */
+router.get('/', function(req, res) {
+    res.render('home', {});
+});
+
 router.get('/login', function(req, res) {
     res.render('login', {});
 });
 
 router.post('/login',
-    app.passport.authenticate('local', app.locals.redirect('/'))
+    app.passport.authenticate('local', app.locals.redirect('/location'))
 );
 
-router.get('/', app.loggedIn('/login'), function(req, res) {
-    var context = {};
-    context.username = req.user.username;
-    res.render('home', context);
-});
 
 router.get('/logout', function(req, res){
     req.logout();

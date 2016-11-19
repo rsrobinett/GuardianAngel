@@ -3,6 +3,7 @@ var app = require('../../app.js').app;
 var request = require('supertest');
 var register = '/register';
 var submit = '/register/new';
+var location = '/location';
 var home = '/';
 
 describe('View registration page', function () {
@@ -24,7 +25,7 @@ describe('Post Users', function () {
         agent
             .post(submit)
             .send(user)
-            .expect('Location', home)
+            .expect('Location', location)
             .expect(302, done)
     });
 

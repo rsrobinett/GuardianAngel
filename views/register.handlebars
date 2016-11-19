@@ -1,33 +1,60 @@
-<!-- Fixed navbar -->
-<nav class="navbar">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href='/' class="navbar-brand">Guardian Angel</a>
+<header>
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Guardian Angel</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href='/register' class="waves-effect waves-light btn">Register</a></li>
+        <li><a href='/login' class="waves-effect waves-light btn">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="container" id='body-container'>
+    <div class="row">
+      <form action="/register/new" method="POST" class="col l6 m6 s8 offset-l3 offset-m3 offset-s1">
+        <div class="card-panel">
+          <h5 class='center'>Register</h5>
+          <p class="center">Activate your device now!</p>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">perm_identity</i>
+              <input id="reg-username" name='username' type="text" class="validate">
+              <label for="reg-username">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock_outline</i>
+              <input id="reg-password" name='password' type="password" class="validate">
+              <label for="reg-password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">visibility</i>
+              <input id="reg-child" name='child' type='text' class="validate">
+              <label for="reg-child">Child's Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input id="reg-email" name='email' type='text' class="validate">
+              <label for="reg-email">Email</label>
+            </div>
+            <div class="input-field col s12 center-align">
+              <button class="btn waves-effect waves-light" type="submit">Register Account
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+            <div class="input-field col s12 center-align">
+              <p class='center-align'>Have an Account? <a href="#">Login</a></p>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-</nav>
+</main>
 
-<div class="container">
-  <div class="jumbotron">
-    <h2>Create Account</h2>
-    <form action="/register/new" method="post">
-      <fieldset>
-        <label for="username">Username<br><input type="text" name="username"></label>
-        <br>
-        <label for="city">Password<br><input type="password" name="password"></label>
-        <br>
-        <label for="temp">Child's Name<br><input type="text" name="child"></label>
-        <br>
-        <br>
-      </fieldset>
-      <input type="submit" value="Register">
-    </form>
-  </div>
-</div> <!-- /container -->

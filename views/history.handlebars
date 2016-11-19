@@ -1,45 +1,52 @@
-<nav class="navbar">
-  <div class='container'>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href='/' class="navbar-brand">Guardian Angel</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href=#>Location</a></li>
-        <li><a href='/history'>History</a></li>
-        <li><a href='/logout'>logout</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>Welcome, {{username}} </li>
-      </ul>
-    </div><!--/.nav-collapse -->
+<header>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper container">
+        <a href="/location" class="brand-logo"><i class="material-icons">cloud</i>Guardian Angel</a>
+        <ul id="nav-mobile" class="right">
+          <li><a href="/location"><i class="material-icons right">person_pin</i>Location</a></li>
+          <li><a href="/history"><i class="material-icons right">history</i>History</a></li>
+          <li><a href="/logout"><i class="material-icons right">input</i>Logout</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
-<h2>history</h2>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Longitude</th>
-    <th>Latitude</th>
-    <th>HeartRate</th>
-    <th>View Map</th>
-  </tr>
-  {{#each history}}
-  <tr>
-    <td>{{this.datatime}}</td>
-    <td>{{this.longitude}}</td>
-    <td>{{this.latitude}}</td>
-    <td>{{this.heartrate}}</td>
-    <td><a>map</a></td>
-  </tr>
-  {{/each}}
-</table>
+</header>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class='valign-wrapper'>
+        <div class="col s10">
+          <h3 class='map-header'>History</h3>
+        </div>
+        <div class="col s2 right-align">
+          <a class="waves-effect waves-light btn valign">Download</a>
+        </div>
+      </div>
+    </div>
+    <table class='highlight'>
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Longitude</th>
+        <th>Latitude</th>
+        <th>HeartRate</th>
+        <th>View Map</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each history}}
+        <tr>
+          <td>{{this.datatime}}</td>
+          <td>{{this.longitude}}</td>
+          <td>{{this.latitude}}</td>
+          <td>{{this.heartrate}}</td>
+          <td><a>map</a></td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</main>
 
 

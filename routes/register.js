@@ -68,7 +68,7 @@ router.gdPairCallback = function (req, res, id) {
                     res.status(500).send(err);
                 }
                 locationSimulator.executeNew(user.id);
-                res.redirect('/');
+                res.redirect('/location');
             });
         }
     }

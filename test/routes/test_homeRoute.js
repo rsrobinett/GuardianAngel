@@ -2,17 +2,18 @@ var assert = require('assert');
 var app = require('../../app.js').app;
 var request = require('supertest');
 var login = '/login';
+var location = '/location';
 var home = '/';
 var user;
 
 describe('Home Post Routes', function () {
     var agent = request.agent(app);
-    it('should login successfully and redirect to home', function (done) {
+    it('should login successfully and redirect to location', function (done) {
         user = app.locals.mocha;
         agent
             .post(login)
             .send(user)
-            .expect('Location', home)
+            .expect('Location', location)
             .expect(302, done);
     });
 
@@ -27,11 +28,10 @@ describe('Home Post Routes', function () {
 
 describe('Home Get Routes Not Logged In', function () {
     var agent = request.agent(app);
-    it('should direct to "/login"', function (done) {
+    it('should direct to "/"', function (done) {
         agent
             .get(home)
-            .expect(302)
-            .expect('Location', login, done)
+            .expect(200, done)
     });
 
     it('should direct to "/login"', function (done) {
@@ -48,13 +48,13 @@ describe('Home Get Routes Logged In', function () {
         agent
             .post(login)
             .send(user)
-            .expect('Location', home)
+            .expect('Location', location)
             .expect(302, done);
     });
 
     it('should direct to home', function (done) {
         agent
-            .get(home)
+            .get(location)
             .expect(200, done)
     });
 
