@@ -2,7 +2,8 @@
 0) The first time you use the app you'll need to run "npm install". In c9.io you can do 
     this through the terminal (Alt + L).
  
-1) In c9.io Open `app.js` and start the app by clicking on the "Run" button in the top menu.
+1)  In c9.io Open `app.js` and start the app by clicking on the "Run" button in the top menu. Make
+    sure that the Command field says, Command: app.js
 
 2) Alternatively you can launch the app from the Terminal:
 
@@ -55,6 +56,20 @@ Follow the sturcture of the "example" page for wiring up a new page.
 You'll need to add to app.js, create .js in routes folder and .handlebars in 
 views folder. 
 
+## Database
+
+1)  The most recent pushed build of the database will be hosted on the AWS server
+    and should be live.  
+    
+    
+
 ## Note Taking
 
 Please leave a note on how to use a particular feature if it isn't obvious.
+
+## Unit Tests
+
+1)  Review https://mochajs.org/ for a tutorial on how to use mocha.  Each javascript
+    file and/or view should have it's own test_filename.js file placed in the /test 
+    directory.  The done function in the async examples is not actually defined 
+    anywhere in the test. 
