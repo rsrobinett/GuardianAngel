@@ -3,7 +3,7 @@ module.exports = {
     globals : {
         title : "Guardian Angel",
         description : "Keep watch over your child",
-        deviceInterval: 1000 * 30,   // 30s
+        deviceInterval: 1000 * 60 * 60,   // 1hr
         redirect: function(route) {
             return {
                 successReturnToOrRedirect: route,
@@ -39,16 +39,10 @@ module.exports = {
         c9: {
             host: '127.0.0.1',
             port: '3306',
-            user: 'rachelle',
+            user: 'zduerr',
             database: 'c9',
             multipleStatements: true
         },
-            // Make sure this is updated to your c9 build
-        //     host: 'rachelle-guardian_angel-4014002', 
-        //     port: '3306',
-        //     user: 'rachelle',
-        //     database: 'c9'
-        // },
 
         ec2: {
             connectionLimit: 10,

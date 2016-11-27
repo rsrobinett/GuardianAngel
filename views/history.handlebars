@@ -12,41 +12,79 @@
     </nav>
   </div>
 </header>
-<main>
+<main class='main-padding'>
   <div class="container">
     <div class="row">
       <div class='valign-wrapper'>
         <div class="col s10">
-          <h3 class='map-header'>History</h3>
+          <h3 class='map-header'>Location History</h3>
         </div>
         <div class="col s2 right-align">
-          <a class="waves-effect waves-light btn valign">Download</a>
+          <a id='dl-button' class="waves-effect waves-light btn valign">Download</a>
         </div>
       </div>
     </div>
-    <table class='highlight'>
+    <table class='highlight' id='table-click'>
       <thead>
-      <tr>
+      <tr class='history-row'>
         <th>Date</th>
         <th>Longitude</th>
         <th>Latitude</th>
         <th>HeartRate</th>
-        <th>View Map</th>
+        <th class='hr-map'>View Map</th>
       </tr>
       </thead>
       <tbody>
       {{#each history}}
-        <tr>
+        <tr class='history-row'>
           <td>{{this.datatime}}</td>
           <td>{{this.longitude}}</td>
           <td>{{this.latitude}}</td>
           <td>{{this.heartrate}}</td>
-          <td><a>map</a></td>
+          <td class='hr-map'><a name='{{this.latitude}} {{this.longitude}}' class="hr-mapclick  waves-effect waves-light">Map</a>
+          </td>
         </tr>
       {{/each}}
       </tbody>
     </table>
   </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4 class='map-header'>Location</h4>
+      <div id='hmap'></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn">OK</a>
+    </div>
+  </div>
 </main>
-
-
+<footer class="page-footer" id='ftr'>
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Guardian Angel</h5>
+        <p class="grey-text text-lighten-4">Sign up for an account now</p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Support</h5>
+        <ul>
+          <li><a class="white-text" href="#!">Help Number</a></li>
+          <li><a class="white-text" href="#!">Something</a></li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Contact</h5>
+        <ul>
+          <li><a class="white-text" href="#!">Email</a></li>
+          <li><a class="white-text" href="#!">Something Else</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Find on <a class="orange-text text-lighten-3" href="https://github.com/rsrobinett/GuardianAngel">Github</a>
+    </div>
+  </div>
+</footer>
+<script src='../public/js/history.js'></script>

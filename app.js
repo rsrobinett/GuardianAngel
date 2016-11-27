@@ -13,8 +13,8 @@ app.locals = app.config.globals;
 exports.app = app;
 
 //create db connection using local or live db, also set mocha test IPs
-var port = process.env.PORT || 300;
-app.con = mysql.createConnection(db.local);  // change to db.ec2 for AWS host or db.c9 for c9 testing
+var port = process.env.PORT || 80;
+app.con = mysql.createConnection(db.ec2);  // change to db.ec2 for AWS host or db.c9 for c9 testing
 
 //set up public directories
 app.use('/public', express.static(__dirname + '/public'));

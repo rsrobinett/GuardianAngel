@@ -12,8 +12,13 @@ router.queryCallback = function (req, res) {
             context.empty = true;
             res.render('history', context);
         } else {
-            context.history = rows;
             context.username = req.user.username;
+            context.history = [rows[0]];
+            for (var i = 1; i < rows.length; i++) {
+                if (rows[i].datatime.getHours() != context.history[context.history.length - 1].datatime.getHours()) {
+                    context.history.push(rows[i]);
+                }
+            }
             res.render('history', context);
         }
     };

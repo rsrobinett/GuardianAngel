@@ -12,37 +12,15 @@
     </nav>
   </div>
 </header>
-<main>
-  <div class="container">
-    <h2 class='map-header'>Real Time Location</h2>
-    <div class="card">
-      <div class="card-image">
-          <div id="map"></div>
-        <span class="card-title materialize-red-text center-align">
-              <i class="material-icons materialize-red-text center-align">favorite</i> {{heartrate}}
-            </span>
-      </div>
-      <div class="card-content valign-wrapper">
-        <i class="material-icons">my_location</i>
-        <span class='cap valign'>&nbsp{{name}}</span><span
-          class='valign'>&nbspwas at (address) at {{datatime}}</span>
-      </div>
-    </div>
-  </div>
+<main id='main-location'>
+  <div name='{{latitude}} {{longitude}} {{heartrate}}' id="map"></div>
 </main>
-<script>
-  function initMap() {
-    var pos = {lat: {{latitude}}, lng: {{longitude}} };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 16,
-      center: pos
-    });
-    var marker = new google.maps.Marker({
-      position: pos,
-      map: map
-    });
-  }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfNdzvBzM5eUew6Y3C1b5lfyljjSKFuE&callback=initMap">
-</script>
+<div class="navbar">
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="/location" class="brand-logo center"><i class="material-icons">av_timer</i>{{datatime}}</a>
+    </div>
+  </nav>
+</div>
+<script src='../public/js/location.js'></script>
+

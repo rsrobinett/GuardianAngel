@@ -10,8 +10,8 @@ function LocationPush(deviceId) {
 
 LocationPush.prototype.randomize = function () {
     this.datatime = new Date();
-    this.longitude += this.randomRange(0.001);
-    this.latitude += this.randomRange(0.001);
+    this.longitude += this.randomRange(0.005);
+    this.latitude += this.randomRange(0.005);
     this.heartrate += Math.floor(this.randomRange(3));
     if (this.heartrate > 150) {
         this.heartrate = 150;

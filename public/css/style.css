@@ -2,8 +2,25 @@
   padding: 20px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
-  background-color: #fff;
+  background-color: #eceff1;
 }
+
+.main-form {
+  background-image: url("./bgsu.jpg");
+}
+
+#ftr {
+  margin-top: 0;
+}
+
+#login-expand {
+  height: 700px;
+}
+
+.main-padding {
+  padding-bottom: 20px;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -13,14 +30,35 @@ main {
   flex: 1 0 auto;
 }
 
-#body-container {
+#main-location {
+  height: 1px;
+}
+
+#map {
+  height: 100%;
+}
+
+#location-refresh {
+  font-size: 12px;
+}
+.body-container {
   margin-top: 30px;
 }
 
-#map, #pano{
+#pano{
    height: 500px;
    width: 100%;
- }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#hmap {
+  height: 300px;
+}
 
 .cap {
   text-transform: capitalize;
@@ -30,3 +68,4 @@ main {
   color: #ee6e73;
   font-weight: 300;
 }
+
