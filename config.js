@@ -3,7 +3,7 @@ module.exports = {
     globals : {
         title : "Guardian Angel",
         description : "Keep watch over your child",
-        deviceInterval: 1000 * 60 * 60,   // 1hr
+        deviceInterval: 1000 * 60 * 5,   // 1hr
         redirect: function(route) {
             return {
                 successReturnToOrRedirect: route,

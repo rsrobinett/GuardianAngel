@@ -15,7 +15,7 @@ router.queryCallback = function (req, res) {
             context.username = req.user.username;
             context.history = [rows[0]];
             for (var i = 1; i < rows.length; i++) {
-                if (rows[i].datatime.getHours() != context.history[context.history.length - 1].datatime.getHours()) {
+                if (context.history[context.history.length - 1].datatime.getTime() - rows[i].datatime.getTime() > 900000) {
                     context.history.push(rows[i]);
                 }
             }

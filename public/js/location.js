@@ -1,8 +1,9 @@
 function buildMap() {
     var e = $('#map');
-    var latLongHr = e.attr('name').split(' ');
-    var pos = {lat: parseFloat(latLongHr[0]), lng: parseFloat(latLongHr[1])};
-    var hr = latLongHr[2];
+    var latLongHrTime = e.attr('name').split(' ');
+    var pos = {lat: parseFloat(latLongHrTime[0]), lng: parseFloat(latLongHrTime[1])};
+    var hr = latLongHrTime[2];
+    var time = new Date(latLongHrTime[3]);
 
     geocoder = new google.maps.Geocoder;
     infowindow = new google.maps.InfoWindow;
@@ -34,6 +35,11 @@ function buildMap() {
             $('#map-address').text('an unknown location')
         }
     });
+    var $curTime = $("a.brand-logo.center");
+    var text = $curTime.html() + " ";
+    text += time.toLocaleString();
+    console.log(text);
+    $curTime.html(text);
 }
 
 $($.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfNdzvBzM5eUew6Y3C1b5lfyljjSKFuE&callback=buildMap"));
