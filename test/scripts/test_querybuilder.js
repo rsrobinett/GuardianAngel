@@ -75,16 +75,16 @@ describe('Queries', function () {
         it('should create correct add deviceData mysql query', function () {
             var body = {};
             body.deviceId = 'did';
-            body.datatime = new Date(0);
+            body.datatime = '1970-01-01 00:00:00.000';
             body.latitude = 1;
             body.longitude = 1;
             body.heartrate = 1;
 
             var expect = 'insert into DeviceData (DeviceId, DataTime, Longitude, Latitude, HeartRate) ' +
-                "values ('did'" + ', ' + "'1969-12-31 16:00:00.000'" + ', ' +
+                "values ('did'" + ', ' + "'1970-01-01 00:00:00.000'" + ', ' +
                 '1' + ', ' + '1' + ', ' + '1' + ')';
             var actual = qb.add.deviceData(body, app.con);
-            assert(expect == actual);
+            assert(expect == actual, "Expected:" + expect.valueOf() +"|| Actual:" + actual.valueOf());
         });
 
         it('should create correct add device mysql query', function () {

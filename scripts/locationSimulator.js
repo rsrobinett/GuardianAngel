@@ -61,6 +61,7 @@ module.exports = {
     },
     executeNew: function(id) {
         var device = new LocationPush(id);
+        device.postLocation(app)();
         setInterval(device.postLocation(app), app.locals.deviceInterval);
     },
     LocationPush: LocationPush

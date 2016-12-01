@@ -15,7 +15,7 @@ router.queryCallback = function (req, res) {
         } else {
             context = rows[0];
             context.username = req.user.username;
-            context.datatime = context.datatime.toLocaleString();
+            context.datatime = context.datatime.toISOString();
             res.render('location', context);
         }
     };

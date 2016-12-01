@@ -61,7 +61,6 @@ module.exports = {
                 'values (' + con.escape(body.deviceId) + ', ' + con.escape(body.datatime) + ', ' +
                 con.escape(body.longitude) + ', ' + con.escape(body.latitude) + ', ' +
                 con.escape(body.heartrate) + ')'; 
-                
             },
             
             device: function(body, con) {
