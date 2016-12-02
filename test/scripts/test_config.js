@@ -8,10 +8,10 @@ describe('isValidReq Test', function () {
             a: "",
             b: ""
         };
-        var has = {
-            a: null,
-            b: "has"
-        };
+        var has = Object.create(null);
+        has.a = null;
+        has.b = "has";
+        
         assert(valreq(expects, has) == false);
         has.a = 'has';
         assert(valreq(expects, has));
