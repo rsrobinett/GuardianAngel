@@ -13,8 +13,11 @@ module.exports = {
         isValidReq: function (expect, has) {
             for (var property in expect) {
                 // (property exists in expect) and [(exists in has and is null/empty) or (does not exists in has)]
-                if (expect.hasOwnProperty(property) && ((has.hasOwnProperty(property) && (has[property] == null
-                    || has[property] == "")) || !has.hasOwnProperty(property))){
+                if (expect.hasOwnProperty(property) && 
+				((Object.prototype.hasOwnProperty.call(has,property) 
+				&& (has[property] == null 
+				|| has[property] == "")) 
+				|| !Object.prototype.hasOwnProperty.call(has,property))){
                     return false;
                 }
             }
@@ -33,7 +36,6 @@ module.exports = {
         use: true
     },
     
-    // should move db values to it's own config. 
     // dbLogin is just our database login credentials for c9 and AWS
     dbLogin: {
         c9: {
@@ -61,12 +63,21 @@ module.exports = {
         local: {
             connectionLimit: 10,
             host: 'localhost',
+            user: 'rachelle',
+            database: 'c9',
+            multipleStatements: true
+        }
+        /*
+        local: {
+            connectionLimit: 10,
+            host: 'localhost',
             port: '8889',
             user: 'zach',
             password: 'H5qsadBGTuuXyJGG',
             database: 'cs290',
             multipleStatements: true
         }
+        */
     },
 
     mapKey: "AIzaSyAmfNdzvBzM5eUew6Y3C1b5lfyljjSKFuE",
